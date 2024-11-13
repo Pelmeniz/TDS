@@ -14,6 +14,8 @@
 #include "Kismet/KismetMathLibrary.h"
 #include "Engine/World.h"
 
+
+
 ATDSCharacter::ATDSCharacter()
 {
 	// Set size for player capsule
@@ -186,4 +188,13 @@ void ATDSCharacter::ChangeMovementState()
 		}
 	}
 	CharacterUpdate();
+}
+
+void ATDSCharacter::InputMouseWheel(float DeltaTime)
+{
+	if ((Height - (HeightMouse * SpeedZoom) > MinHeightZoom - 1) && (Height - (HeightMouse * SpeedZoom) < MaxHeightZoom + 1))
+	{
+		Height = Height - (HeightMouse * SpeedZoom);
+		CameraBoom->TargetArmLength = UKismetMathLibrary::FInterpTo(CameraBoom->TargetArmLength, Height, DeltaTime, 1);
+	}
 }

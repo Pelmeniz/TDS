@@ -75,5 +75,13 @@ public:
 	void CharacterUpdate();
 	UFUNCTION(BlueprintCallable)
 	void ChangeMovementState();
+	UFUNCTION(BlueprintCallable)
+	void InputMouseWheel(float DeltaTime);
+
+	float Height = 300.0f;
+	float HeightMouse = 0.0f;
+	float SpeedZoom = 0.01f;
+	float MinHeightZoom = 0.0f;
+	float MaxHeightZoom = 0.0f;
 };
 
